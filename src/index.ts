@@ -4,6 +4,7 @@ import { app, BrowserWindow } from 'electron';
 // whether you're running in development or production).
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
+import installExtension, { REDUX_DEVTOOLS } from 'electron-devtools-installer';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -51,3 +52,9 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+app.whenReady().then(() => {
+  installExtension(REDUX_DEVTOOLS)
+    .then((name) => console.log(`Added Extension:  ${name}`))
+    .catch((err) => console.log('An error occurred: ', err));
+});
