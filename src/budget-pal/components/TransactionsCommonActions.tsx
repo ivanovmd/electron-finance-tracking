@@ -6,7 +6,7 @@ interface TransactionsCommonActionsProps extends BaseProps {
   onDeleteClick(): void
   onAddTagsClick(): void
   onAddCategoriesClick(): void
-  selectedRows: any[]
+  selectedRows: unknown[]
 }
 
 export default function TransactionsCommonActions({

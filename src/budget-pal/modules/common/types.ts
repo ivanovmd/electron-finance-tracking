@@ -28,3 +28,9 @@ export interface Transaction {
     tags?: Tag[]
     categories?: Category[]
 }
+
+export interface ParsedCsvFile {
+    name: string
+    columns: string[]
+    rows: string[][]
+}
