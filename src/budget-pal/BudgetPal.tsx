@@ -7,9 +7,23 @@ import CategoryWeights from './components/CategoryWeights';
 import TransactionsTable from './components/TransactionsTable';
 import { categories, transactions } from './tests/testData';
 import { parseCsvFile } from './helpers/csvHelper';
+import * as db from './database/index'
 
 
 function BudgetPal() {
+  //db.transactionsDb.bulkDocs([
+  //  {
+  //    _id: new Date().toJSON(),
+  //    test_field1: 'hello there'
+  //  },
+  //  {
+  //    _id: new Date().toJSON(),
+  //    test_field1: 'hello again'
+  //  }
+  //])
+
+  db.transactionsDb.allDocs({ include_docs: true }).then(docs => console.log(docs))
+
   return <MainLayout>
 
     <Sidebar>

@@ -18,6 +18,7 @@
     "noFallthroughCasesInSwitch": true,
     "isolatedModules": true,
     "noEmit": true,
+    "allowSyntheticDefaultImports": true,
     "paths": {
       "*": ["node_modules/*"]
     }
