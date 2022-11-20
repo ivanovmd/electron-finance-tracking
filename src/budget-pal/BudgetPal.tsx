@@ -6,6 +6,7 @@ import Content from './modules/common/Content';
 import CategoryWeights from './components/CategoryWeights';
 import TransactionsTable from './components/TransactionsTable';
 import { categories, transactions } from './tests/testData';
+import { parseCsvFile } from './helpers/csvHelper';
 
 
 function BudgetPal() {
@@ -36,6 +37,25 @@ function BudgetPal() {
       <Typography variant="h4">
         Content
       </Typography>
+
+      <input
+        onChange={(e) => {
+          const files = e.target.files || [];
+          if (files.length > 0) {
+            for (let i = 0; i < files.length; i++) {
+              const file = files[i];
+              console.log(file)
+              parseCsvFile(file)
+                .then(parsedFile => console.log(parsedFile))
+                .catch(e => console.error(e))
+            }
+          }
+        }}
+        accept='.csv'
+        id='contained-button-file'
+        multiple
+        type='file'
+      />
 
       <TransactionsTable transactions={transactions} />
     </Content>
